@@ -1,12 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&subset=cyrillic')
-
 .content
-  font-family: Roboto, sans-serif
   font-size: 18px
-  font-weight: 300
   display: flex
   flex-direction: column
-  height: inherit
+  height: 100%
+
+  &.__reset *
+    transition: none
 
 .arrows
   height: 33px
@@ -26,10 +25,10 @@
   transform-origin: left
 
 .arrow1
-  left: 33px
+  left: 29px
 
 .arrow2
-  left: 33px
+  left: 29px
 
 .arrow3
   left: 99px
@@ -42,7 +41,7 @@
 .ellipsis,
 .text
   opacity: 0
-  transition: opacity .2s
+  transition: opacity .5s
   &.__shown
     opacity: 1
 

@@ -11,31 +11,39 @@ import classNames from "classnames";
 export class Content extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {slideNumber: 1}
+		this.state = {
+			slideNumber: 1,
+			reset: false
+		}
 	}
 
 	onBack = () => {
 		this.setState((state) => ({
-			slideNumber: Math.max(state.slideNumber - 1, 1)
+			slideNumber: Math.max(state.slideNumber - 1, 1),
+			reset: false
 		}))
 	}
 
 	onForward = () => {
 		this.setState((state) => ({
-			slideNumber: Math.min(Object.keys(slides).length, state.slideNumber + 1)
+			slideNumber: Math.min(Object.keys(slides).length, state.slideNumber + 1),
+			reset: false
 		}))
 	}
 
 	onReset = () => {
-		this.setState({slideNumber: 1})
+		this.setState({
+			slideNumber: 1,
+			reset: true
+		})
 	}
 
 	render() {
-		const {slideNumber} = this.state;
+		const {slideNumber, reset} = this.state;
 		const activeSlide = slides[slideNumber];
 		const slidesCount = Object.keys(slides).length;
 		return (
-			<div className={styles.content}>
+			<div className={classNames(styles.content, {[styles.__reset]: reset})}>
 				<div className={classNames(
 					styles.text,
 					{[styles.__shown]: activeSlide.text}

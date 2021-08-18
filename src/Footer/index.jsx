@@ -21,7 +21,7 @@ export const Footer = ({
 					classNames="fade"
 				>
 					<span className={styles.counterText}>
-						{`${slideNumber} of ${slidesCount}`}
+						{`${slideNumber} из ${slidesCount}`}
 					</span>
 				</CSSTransition>
 			</TransitionGroup>
