@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {Arrow1, Arrow2, Arrow3, Arrow4} from './Arrow.jsx';
+import {A, B, X, Y, Equals, Plus, Ellipsis} from './Symbols.jsx';
 import {A_bx_y} from './(a+b)(x+y).jsx';
 import {Footer} from '../Footer/index.jsx';
 import {slides} from './slides.js';
 import styles from './styles.sass';
-
+import classNames from "classnames";
 
 
 export class Content extends Component {
@@ -15,13 +16,13 @@ export class Content extends Component {
 
 	onBack = () => {
 		this.setState((state) => ({
-			slideNumber: state.slideNumber - 1
+			slideNumber: Math.max(state.slideNumber - 1, 1)
 		}))
 	}
 
 	onForward = () => {
 		this.setState((state) => ({
-			slideNumber: state.slideNumber + 1
+			slideNumber: Math.min(Object.keys(slides).length, state.slideNumber + 1)
 		}))
 	}
 
@@ -35,7 +36,12 @@ export class Content extends Component {
 		const slidesCount = Object.keys(slides).length;
 		return (
 			<div className={styles.content}>
-				<div className={styles.text}>{activeSlide.text}</div>
+				<div className={classNames(
+					styles.text,
+					{[styles.__shown]: activeSlide.text}
+				)}>
+					{activeSlide.text}
+				</div>
 				<div className={styles.arrows}>
 					{activeSlide.arrow1 && (
 						<div
@@ -70,8 +76,100 @@ export class Content extends Component {
 						</div>
 					)}
 				</div>
-				<div className={styles.stroke2}>
+				<div className={styles.task}>
 					<A_bx_y/>
+				</div>
+				<div className={styles.solution}>
+					<span className={classNames(
+						styles.equals,
+						{[styles.__shown]: activeSlide.a1}
+					)}>
+						<Equals/>
+					</span>
+					<span className={classNames(
+						styles.a1,
+						{[styles.__shown]: activeSlide.a1}
+					)}>
+						<A/>
+					</span>
+					<span className={classNames(
+						styles.x1,
+						{[styles.__shown]: activeSlide.x1}
+					)}>
+						<X/>
+					</span>
+					<span className={classNames(
+						styles.plus,
+						{[styles.__shown]: activeSlide.plus1}
+					)}>
+						<Plus/>
+					</span>
+					<span className={classNames(
+						styles.ellipsis,
+						{[styles.__shown]: activeSlide.ellipsis1}
+					)}>
+						<Ellipsis/>
+					</span>
+					<span className={classNames(
+						styles.a2,
+						{[styles.__shown]: activeSlide.a2}
+					)}>
+						<A/>
+					</span>
+					<span className={classNames(
+						styles.y1,
+						{[styles.__shown]: activeSlide.y1}
+					)}>
+						<Y/>
+					</span>
+					<span className={classNames(
+						styles.plus,
+						{[styles.__shown]: activeSlide.plus2}
+					)}>
+						<Plus/>
+					</span>
+					<span className={classNames(
+						styles.ellipsis,
+						{[styles.__shown]: activeSlide.ellipsis2}
+					)}>
+						<Ellipsis/>
+					</span>
+					<span className={classNames(
+						styles.b1,
+						{[styles.__shown]: activeSlide.b1}
+					)}>
+						<B/>
+					</span>
+					<span className={classNames(
+						styles.x2,
+						{[styles.__shown]: activeSlide.x2}
+					)}>
+						<X/>
+					</span>
+					<span className={classNames(
+						styles.plus,
+						{[styles.__shown]: activeSlide.plus3}
+					)}>
+						<Plus/>
+					</span>
+					<span className={classNames(
+						styles.ellipsis,
+						{[styles.__shown]: activeSlide.ellipsis3}
+					)}>
+						<Ellipsis/>
+					</span>
+					<span className={classNames(
+						styles.b2,
+						{[styles.__shown]: activeSlide.b2}
+					)}>
+						<B/>
+					</span>
+					<span className={classNames(
+						styles.y2,
+						{[styles.__shown]: activeSlide.y2}
+					)}>
+						<Y/>
+					</span>
 				</div>
 				<Footer
 					onBack={this.onBack}
