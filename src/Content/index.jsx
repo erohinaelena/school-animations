@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import styles from './styles.sass';
-import {A_bx_y} from './(a+b)(x+y).jsx';
 import {Arrow1, Arrow2, Arrow3, Arrow4} from './Arrow.jsx';
+import {A_bx_y} from './(a+b)(x+y).jsx';
+import {Footer} from '../Footer/index.jsx';
 import {slides} from './slides.js';
-import { SwitchTransition, CSSTransition, TransitionGroup } from "react-transition-group";
+import styles from './styles.sass';
 
 
 
@@ -73,45 +73,13 @@ export class Content extends Component {
 				<div className={styles.stroke2}>
 					<A_bx_y/>
 				</div>
-				<div className={styles.footer}>
-					<div className={styles.counter}>
-						<TransitionGroup>
-							<CSSTransition
-								key={slideNumber}
-								addEndListener={(node, done) => {
-									node.addEventListener("transitionend", done, false);
-								}}
-								classNames="fade"
-							>
-								<span className={styles.counterText}>
-									{`${slideNumber} of ${slidesCount}`}
-								</span>
-							</CSSTransition>
-						</TransitionGroup>
-					</div>
-					{slideNumber > 1 && slideNumber < slidesCount && (
-						<div
-							onClick={this.onBack}
-						>
-							{'back'}
-						</div>
-					)}
-					{slideNumber < slidesCount && (
-						<div
-							onClick={this.onForward}
-							className={styles.forward}
-						>
-							{'Далее'}
-						</div>
-					)}
-					{slideNumber === slidesCount && (
-						<div
-							onClick={this.onReset}
-						>
-							{'reset'}
-						</div>
-					)}
-				</div>
+				<Footer
+					onBack={this.onBack}
+					onForward={this.onForward}
+					onReset={this.onReset}
+					slideNumber={slideNumber}
+					slidesCount={slidesCount}
+				/>
 			</div>
 		)
 	}

@@ -1,0 +1,80 @@
+.footer
+  display: flex
+  align-items: center
+  margin-top: 200px
+
+.buttonsGroupBackForward
+  display: flex
+  margin-left: 16px
+  transform-origin: right
+  &.__hiddenAfter
+    transition: margin-right 0.2s,  transform 0.2s
+    margin-right: -266px
+    transform: translateX(40px)
+
+.back
+  border-radius: 8px
+  height: 50px
+  width: 50px
+  border: 1px solid #1A1B22
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+  opacity: 0
+  &.__visible
+    transition: opacity 0.2s, transform 0.2s
+    opacity: 1
+
+
+.forward
+  cursor: pointer
+  display: inline-flex
+  align-items: center
+  padding: 0 67px
+  border-radius: 8px
+  background-color: #1A1B22
+  border: 1px solid #1A1B22
+  color: white
+  font-size: 16px
+  height: 50px
+  margin-left: 16px
+
+.reset
+  border-radius: 50px
+  height: 50px
+  width: 50px
+  background-color: #1A1B22
+  border: 1px solid #1A1B22
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+
+.counter
+  position: relative
+  margin-right: auto
+  height: 21px
+
+.counterText
+  position: absolute
+  left: 0
+  white-space: nowrap
+
+
+:global(.fade-enter)
+  opacity: 0
+
+:global(.fade-enter-active)
+  opacity: 1
+
+:global(.fade-exit)
+  opacity: 1
+
+:global(.fade-exit-active)
+  opacity: 0
+
+:global(.fade-enter-active),
+:global(.fade-exit-active)
+  transition: opacity .5s
+
