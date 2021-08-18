@@ -31,6 +31,22 @@ module.exports = {
 				],
 				exclude: [/node_modules/u],
 				include: [path.join(__dirname, 'src')]
+			},
+			{
+				test: /\.(sass|scss|css)$/u,
+				use: [
+					{loader: 'style-loader'},
+					{
+						loader: 'css-loader',
+						options: {
+							modules: {
+								localIdentHashSalt: "test",
+								localIdentName: '[local]___[hash:base64:5]'
+							}
+						}
+					},
+					{loader: 'sass-loader'}
+				]
 			}
 		],
 	},

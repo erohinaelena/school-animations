@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&subset=cyrillic')
+
+.content
+  font-family: Roboto, sans-serif
+  font-size: 18px
+  font-weight: 300
+
+.arrows
+  height: 34px
+  position: relative
+
+.arrow1, .arrow2, .arrow3, .arrow4
+  position: absolute
+  bottom: 0
+  transition: opacity .5s, transform .5s
+  transform-origin: left
+
+.arrow1
+  left: 33px
+
+.arrow2
+  left: 33px
+
+.arrow3
+  left: 103px
+
+.arrow4
+  left: 103px
+
+.text
+  height: 21px
+
+.footer
+  display: flex
+  margin-top: 200px
+
+.forward
+  cursor: pointer
+  display: inline-flex
+  align-items: center
+  padding: 0 67px
+  border-radius: 8px
+  background-color: black
+  color: white
+  font-size: 16px
+  height: 50px
+  margin-left: 16px
+
+.counter
+  position: relative
+  margin-right: auto
+
+.counterText
+  position: absolute
+  left: 0
+  white-space: nowrap
+
+
+:global(.fade-enter)
+  opacity: 0
+
+:global(.fade-enter-active)
+  opacity: 1
+
+:global(.fade-exit)
+  opacity: 1
+
+:global(.fade-exit-active)
+  opacity: 0
+
+:global(.fade-enter-active),
+:global(.fade-exit-active)
+  transition: opacity .5s
+
